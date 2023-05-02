@@ -1,4 +1,4 @@
 # portfolio
 
-* Change background every page refersh
+* Change the background colour on the refresh page.<br/>
 Demo: https://niteshuday.github.io/portfolio/
