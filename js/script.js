@@ -45,7 +45,7 @@ document.addEventListener("click", (e) => {
 });
 /* -------------- About Tabs ----------------------- */
 const tabsContainer = document.querySelector(".about-tabs"),
-    aboutSection = document.querySelector(".about-section");
+        aboutSection = document.querySelector(".about-section");
 
 tabsContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("tab-item") && !e.target.classList.contains("active")) {
@@ -82,11 +82,46 @@ document.addEventListener("click", (e) => {
 
 function portfolioItemDetails(portfolioItem) {
     document.querySelector(".pp-thumbnail img").src =
-        portfolioItem.querySelector(".portfolio-item-thumbnail img").src;
+            portfolioItem.querySelector(".portfolio-item-thumbnail img").src;
 
     document.querySelector(".pp-header h3").innerHTML =
-        portfolioItem.querySelector(".portfolio-item-title").innerHTML;
+            portfolioItem.querySelector(".portfolio-item-title").innerHTML;
 
     document.querySelector(".pp-body").innerHTML =
-        portfolioItem.querySelector(".portfolio-item-details").innerHTML;
+            portfolioItem.querySelector(".portfolio-item-details").innerHTML;
 }
+
+
+/* Function to add style element */
+function addStyle(styles) {
+
+    /* Create style document */
+    var css = document.createElement('style');
+    css.type = 'text/css';
+    if (css.styleSheet) {
+        css.styleSheet.cssText = styles;
+    } else {
+        css.appendChild(document.createTextNode(styles));
+    }
+    /* Append style to the tag name */
+    document.getElementsByTagName("head")[0].appendChild(css);
+}
+function getDynamicStyle() {
+    var letters = "0123456789ABCDEF";
+
+    // html color code starts with #
+    var color = '#';
+
+    // generating 6 times as HTML color code consist
+    // of 6 letter or digits
+    for (var i = 0; i < 6; i++) {
+        color += letters[(Math.floor(Math.random() * 16))];
+    }
+    /* Set the style */
+    return ' body { background-image:  linear-gradient(to bottom right, ' + color + ', var(--cyan-light)); }';
+
+}
+/* Function call */
+window.onload = function () {
+    addStyle(getDynamicStyle());
+};
